@@ -9,7 +9,9 @@ class Level extends World {
   Future<void> onLoad() async {
     level = await TiledComponent.load('Level-01.tmx', Vector2.all(16));
     add(level);
-    add(Player());
+    add(Player(
+      character: 'Pink Man',
+    ));
 
     return super.onLoad();
   }
