@@ -22,3 +22,4 @@ class PixelAdventure extends FlameGame {
     return super.onLoad();
   }
 }
+ 

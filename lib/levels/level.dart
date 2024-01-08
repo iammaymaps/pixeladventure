@@ -9,9 +9,25 @@ class Level extends World {
   Future<void> onLoad() async {
     level = await TiledComponent.load('Level-01.tmx', Vector2.all(16));
     add(level);
-    add(Player(
-      character: 'Pink Man',
-    ));
+
+    final spawanPointsLayer = level.tileMap.getLayer<ObjectGroup>(
+      'Spwanpoints',
+    );
+
+    for (final spawanPoints in spawanPointsLayer!.objects) {
+      switch (spawanPoints.class_) {
+        case 'Player':
+          final player = Player(
+              character: "Mask Dude",
+              position: Vector2(
+                spawanPoints.x,
+                spawanPoints.y,
+              ));
+          add(player);
+          break;
+        default:
+      }
+    }
 
     return super.onLoad();
   }
